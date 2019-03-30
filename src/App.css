@@ -1,0 +1,37 @@
+html,body{
+  background-color: #282C34;
+}
+.App {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  background-color: #282C34;
+}
+
+.img-responsive{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.message-list{
+  color:white;
+  border-left: 1px #353A3F solid;
+  border-bottom: 1px #353A3F solid;
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.message-dividers{
+  border-top: 1px #353A3F solid;
+}
+
+.message-image{
+  display: block;
+  min-width: 32px;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
