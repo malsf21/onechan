@@ -59,7 +59,7 @@ class App extends Component {
                 image="https://api.adorable.io/avatars/256/solongandthanksforallthefish.png"
               ></UserInfo>
               <div className="text-white text-center">
-                <small>made by <a href="https://matthewwang.me">matt</a> on <a href="https://github.com/malsf21/onechan">GitHub</a> // avatars from <a href="http://avatars.adorable.io/">adorable avatars</a></small>
+                <small>made by <a href="https://matthewwang.me">matt</a> on <a href="https://github.com/malsf21/onechan">GitHub</a> |  avatars from <a href="http://avatars.adorable.io/">adorable avatars</a></small>
               </div>
             </Col>
             <Col xs="9">

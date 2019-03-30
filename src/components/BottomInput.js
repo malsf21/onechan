@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Input } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
 
 class BottomInput extends Component {
   render() {

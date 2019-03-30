@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import { Container, Row, Col } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, Button } from 'reactstrap';
 
 
 class Message extends Component {
@@ -23,11 +21,9 @@ class Message extends Component {
                     <img className="message-image" src={this.state.image} alt="A random avatar generated from adorable avatars." />
                 </Col>
                 <Col xs="10" md="11">
-                <CardText>
                     <b>@{this.state.username}</b>
                     <br />
                     {this.state.message}
-                </CardText>
                 </Col>
             </Row>
         </Container>
