@@ -2,13 +2,35 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { Container, Row, Col } from 'reactstrap';
+import RandomWord from 'random-words';
+import constants from './constants.json';
 
 import BottomInput from './components/BottomInput';
 import MainNavbar from './components/MainNavbar';
 import MessageList from './components/MessageList';
 import UserInfo from './components/UserInfo';
 
+
+
 class App extends Component {
+  constructor(props){
+    super(props);
+    let newUsername = RandomWord() + RandomWord();
+    let imgString = constants["adorable-avatars-url"] + constants["profile-avatar-size"] + "/" + newUsername + ".png";
+    this.state = {
+      image: imgString,
+      username: newUsername
+    };
+  }
+  generateNewUser(){
+    console.log("Derp");
+    let newUsername = RandomWord() + RandomWord();
+    let imgString = constants["adorable-avatars-url"] + constants["profile-avatar-size"] + "/" + newUsername + ".png";
+    this.setState({
+      image: imgString,
+      username: newUsername
+    });
+  }
   render() {
     let tempMsgList = [
       {
@@ -55,11 +77,12 @@ class App extends Component {
           <Row>
             <Col xs="3">
               <UserInfo
-                username="agnes"
-                image="https://api.adorable.io/avatars/256/solongandthanksforallthefish.png"
+                username={this.state.username}
+                image={this.state.image}
+                generateNewUser = {() => {this.generateNewUser()}}
               ></UserInfo>
               <div className="text-white text-center">
-                <small>made by <a href="https://matthewwang.me">matt</a> on <a href="https://github.com/malsf21/onechan">GitHub</a> |  avatars from <a href="http://avatars.adorable.io/">adorable avatars</a></small>
+                <small>made by <a href="https://matthewwang.me">matt</a> on <a href="https://github.com/malsf21/onechan">GitHub</a> with React |  avatars from <a href="http://avatars.adorable.io/">adorable avatars</a></small>
               </div>
             </Col>
             <Col xs="9">

@@ -18,7 +18,7 @@ class Message extends Component {
         <Container fluid>
             <Row>
                 <Col xs="2" md="1">
-                    <img className="message-image" src={this.state.image} alt="A random avatar generated from adorable avatars." />
+                    <img className="message-image rounded" src={this.state.image} alt="A random avatar generated from adorable avatars." />
                 </Col>
                 <Col xs="10" md="11">
                     <b>@{this.state.username}</b>
