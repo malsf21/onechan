@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import firebase from './firebase.js';
 import { Container, Row, Col } from 'reactstrap';
 import RandomWord from 'random-words';
 import constants from './constants.json';
@@ -20,58 +21,37 @@ class App extends Component {
     this.state = {
       userImage: imgString,
       username: newUsername,
-      messageList: [
-        {
-          "message": "Hello, anybody there?",
-          "image": "https://api.adorable.io/avatars/256/solongandthanksforallthefish.png",
-          "username": "agnes"
-        },
-        {
-          "message": "LOL, nobody's here, this site sucks.",
-          "image": "https://api.adorable.io/avatars/256/solongandthanksforallthefish.png",
-          "username": "agnes"
-        },
-        {
-          "message": "Hey, don't be so mean :'(",
-          "image": "https://api.adorable.io/avatars/256/feelingsarefatal.png",
-          "username": "pristine"
-        },
-        {
-          "message": "Yeah, I'm sure matt put a non-trivial amount of time into this!",
-          "image": "https://api.adorable.io/avatars/256/fouroutoffive.png",
-          "username": "arctic"
-        },
-        {
-          "message": "I mean yeah, but it's still not that good.",
-          "image": "https://api.adorable.io/avatars/256/matt.png",
-          "username": "matt"
-        },
-        {
-          "message": "Yeah, tbh it really isn't amazing.",
-          "image": "https://api.adorable.io/avatars/256/feelingsarefatal.png",
-          "username": "pristine"
-        },
-        {
-          "message": "Doesn't this idea already exist too?",
-          "image": "https://api.adorable.io/avatars/256/supermarketsucked.png",
-          "username": "bicoastal"
-        }
-        
-      ]
+      messageList: []
     };
   }
+  componentDidMount() {
+    let messagesRef = firebase.database().ref('messages');
+    messagesRef.on('value', (snapshot) => {
+      let messages = snapshot.val();
+      let newMessagesList = [];
+      for (let message in messages) {
+        let newMessage = {
+          message: messages[message].message,
+          image: messages[message].image,
+          username: messages[message].username,
+          timestamp: messages[message].timestamp
+        }
+        newMessagesList.push(newMessage);
+      }
+      this.setState({
+        messageList: newMessagesList
+      });
+    });
+  }
   createMessage(text){
-    console.log(text);
     let newMessage = {
       image: this.state.userImage,
       message: text,
-      username: this.state.username
+      username: this.state.username,
+      timestamp: Date.now()
     }
-    let newMessageList = this.state.messageList;
-    newMessageList.push(newMessage);
-    this.setState({
-      messageList: newMessageList
-    });
+    let messagesRef = firebase.database().ref('messages');
+    messagesRef.push(newMessage);
   }
   generateNewUser(){
     let newUsername = RandomWord() + RandomWord();

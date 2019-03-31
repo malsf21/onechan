@@ -12,10 +12,10 @@ class BottomInput extends Component {
     this.setState({ message: e.target.value });
   }
   handleSubmit(e){
+    e.preventDefault();
     let messageString = this.state.message;
     this.props.createMessage(messageString);
-    this.state.message = "";
-    e.preventDefault();
+    this.setState({message: ""});
   }
   render() {
     return (
