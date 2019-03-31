@@ -15,7 +15,7 @@ class MessageList extends Component {
         this.messagesEnd.current.scrollIntoView({ behavior: 'smooth' })
     }
     render() {
-        if (this.props.messageList.length == 0){
+        if (this.props.messageList.length === 0){
             return (
                 <div className="text-white">
                     It's empty. Why not say something?
