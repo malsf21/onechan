@@ -18,7 +18,6 @@ html,body{
 .message-list{
   color:white;
   border-left: 1px #353A3F solid;
-  border-bottom: 1px #353A3F solid;
   height: 80vh;
   overflow-y: scroll;
 }

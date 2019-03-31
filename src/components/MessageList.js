@@ -3,12 +3,17 @@ import Message from './Message';
 
 
 class MessageList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      messageList: this.props.messageList
+    messagesEnd = React.createRef()
+
+    componentDidMount () {
+      this.scrollToBottom()
     }
-  }
+    componentDidUpdate () {
+      this.scrollToBottom()
+    }
+    scrollToBottom = () => {
+      this.messagesEnd.current.scrollIntoView({ behavior: 'smooth' })
+    }
   render() {
     return (
       <div className="message-list">
@@ -19,6 +24,7 @@ class MessageList extends Component {
                 )
             })
           }
+          <div ref={this.messagesEnd} />
       </div>
     );
   }

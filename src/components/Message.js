@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 
 import { Container, Row, Col } from 'reactstrap';
+import moment from 'moment';
 
 
 class Message extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: this.props.messageObject.image,
-      message: this.props.messageObject.message,
-      username: this.props.messageObject.username
-    }
-  }
   render() {
     return (
       <div className="my-2">
         <Container fluid>
             <Row>
                 <Col xs="2" md="1">
-                    <img className="message-image rounded" src={this.state.image} alt="A random avatar generated from adorable avatars." />
+                    <img className="message-image rounded" src={this.props.messageObject.image} alt="A random avatar generated from adorable avatars." />
                 </Col>
                 <Col xs="10" md="11">
-                    <b>@{this.state.username}</b>
-                    <br />
-                    {this.state.message}
+                    <div><b>@{this.props.messageObject.username}</b> {moment(this.props.messageObject.timestamp).fromNow()}</div>
+                    {this.props.messageObject.message}
                 </Col>
             </Row>
         </Container>
