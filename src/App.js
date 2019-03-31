@@ -18,58 +18,70 @@ class App extends Component {
     let newUsername = RandomWord() + RandomWord();
     let imgString = constants["adorable-avatars-url"] + constants["profile-avatar-size"] + "/" + newUsername + ".png";
     this.state = {
-      image: imgString,
-      username: newUsername
+      userImage: imgString,
+      username: newUsername,
+      messageList: [
+        {
+          "message": "Hello, anybody there?",
+          "image": "https://api.adorable.io/avatars/256/solongandthanksforallthefish.png",
+          "username": "agnes"
+        },
+        {
+          "message": "LOL, nobody's here, this site sucks.",
+          "image": "https://api.adorable.io/avatars/256/solongandthanksforallthefish.png",
+          "username": "agnes"
+        },
+        {
+          "message": "Hey, don't be so mean :'(",
+          "image": "https://api.adorable.io/avatars/256/feelingsarefatal.png",
+          "username": "pristine"
+        },
+        {
+          "message": "Yeah, I'm sure matt put a non-trivial amount of time into this!",
+          "image": "https://api.adorable.io/avatars/256/fouroutoffive.png",
+          "username": "arctic"
+        },
+        {
+          "message": "I mean yeah, but it's still not that good.",
+          "image": "https://api.adorable.io/avatars/256/matt.png",
+          "username": "matt"
+        },
+        {
+          "message": "Yeah, tbh it really isn't amazing.",
+          "image": "https://api.adorable.io/avatars/256/feelingsarefatal.png",
+          "username": "pristine"
+        },
+        {
+          "message": "Doesn't this idea already exist too?",
+          "image": "https://api.adorable.io/avatars/256/supermarketsucked.png",
+          "username": "bicoastal"
+        }
+        
+      ]
     };
   }
+  createMessage(text){
+    console.log(text);
+    let newMessage = {
+      image: this.state.userImage,
+      message: text,
+      username: this.state.username
+    }
+    let newMessageList = this.state.messageList;
+    newMessageList.push(newMessage);
+    this.setState({
+      messageList: newMessageList
+    });
+  }
   generateNewUser(){
-    console.log("Derp");
     let newUsername = RandomWord() + RandomWord();
     let imgString = constants["adorable-avatars-url"] + constants["profile-avatar-size"] + "/" + newUsername + ".png";
     this.setState({
-      image: imgString,
+      userImage: imgString,
       username: newUsername
     });
   }
   render() {
-    let tempMsgList = [
-      {
-        "message": "Hello, anybody there?",
-        "image": "https://api.adorable.io/avatars/256/solongandthanksforallthefish.png",
-        "username": "agnes"
-      },
-      {
-        "message": "LOL, nobody's here, this site sucks.",
-        "image": "https://api.adorable.io/avatars/256/solongandthanksforallthefish.png",
-        "username": "agnes"
-      },
-      {
-        "message": "Hey, don't be so mean :'(",
-        "image": "https://api.adorable.io/avatars/256/feelingsarefatal.png",
-        "username": "pristine"
-      },
-      {
-        "message": "Yeah, I'm sure matt put a non-trivial amount of time into this!",
-        "image": "https://api.adorable.io/avatars/256/fouroutoffive.png",
-        "username": "arctic"
-      },
-      {
-        "message": "I mean yeah, but it's still not that good.",
-        "image": "https://api.adorable.io/avatars/256/matt.png",
-        "username": "matt"
-      },
-      {
-        "message": "Yeah, tbh it really isn't amazing.",
-        "image": "https://api.adorable.io/avatars/256/feelingsarefatal.png",
-        "username": "pristine"
-      },
-      {
-        "message": "Doesn't this idea already exist too?",
-        "image": "https://api.adorable.io/avatars/256/supermarketsucked.png",
-        "username": "bicoastal"
-      }
-      
-    ]
     return (
       <div className="App">
         <MainNavbar></MainNavbar>
@@ -78,7 +90,7 @@ class App extends Component {
             <Col xs="3">
               <UserInfo
                 username={this.state.username}
-                image={this.state.image}
+                image={this.state.userImage}
                 generateNewUser = {() => {this.generateNewUser()}}
               ></UserInfo>
               <div className="text-white text-center">
@@ -86,7 +98,7 @@ class App extends Component {
               </div>
             </Col>
             <Col xs="9">
-              <MessageList messageList={tempMsgList}></MessageList>
+              <MessageList messageList={this.state.messageList}></MessageList>
             </Col>
           </Row>
         </Container>
@@ -95,7 +107,7 @@ class App extends Component {
           <Col xs="3">
           </Col>
           <Col xs="9">
-            <BottomInput></BottomInput>
+            <BottomInput createMessage={(text)=>{this.createMessage(text)}}></BottomInput>
           </Col>
         </Row>
       </Container>
