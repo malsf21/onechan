@@ -15,7 +15,7 @@ class BottomInput extends Component {
     e.preventDefault();
     let messageString = this.state.message;
     let noSpaceMsg = messageString.replace(/\s/g,'');
-    if (noSpaceMsg != ""){
+    if (noSpaceMsg !== ""){
       this.props.createMessage(messageString);
     }
     this.setState({message: ""});
