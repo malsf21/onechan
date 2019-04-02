@@ -5,12 +5,14 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "firebase": "^5.9.2",
+    "markdown": "^0.5.0",
     "moment": "^2.24.0",
     "random-words": "^1.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
-    "reactstrap": "^7.1.0"
+    "reactstrap": "^7.1.0",
+    "sanitize-html": "^1.20.0"
   },
   "scripts": {
     "start": "react-scripts start",

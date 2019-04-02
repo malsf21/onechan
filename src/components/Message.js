@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 
 import { Container, Row, Col } from 'reactstrap';
 import moment from 'moment';
+import sanitize from 'sanitize-html';
+
 
 
 class Message extends Component {
+
+  createMarkup(html) {
+    let sanitizedHtml = sanitize(html);
+    let markdown = require( "markdown" ).markdown;
+    return {__html: markdown.toHTML(sanitizedHtml)};
+  }
   render() {
     return (
       <div className="my-2">
@@ -15,7 +23,7 @@ class Message extends Component {
                 </Col>
                 <Col xs="10" md="11">
                     <div><b>@{this.props.messageObject.username}</b> {moment(this.props.messageObject.timestamp).fromNow()}</div>
-                    {this.props.messageObject.message}
+                    <div dangerouslySetInnerHTML={this.createMarkup(this.props.messageObject.message)}></div>
                 </Col>
             </Row>
         </Container>
