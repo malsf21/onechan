@@ -32,7 +32,7 @@ class App extends Component {
       for (let message in messages) {
         let newMessage = {
           message: messages[message].message,
-          image: messages[message].image,
+          image: messages[message].image.replace("https://api.adorable.io/avatars/", constants["adorable-avatars-url"]),
           username: messages[message].username,
           timestamp: messages[message].timestamp
         }
