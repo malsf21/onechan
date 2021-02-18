@@ -74,7 +74,7 @@ class App extends Component {
                 generateNewUser = {() => {this.generateNewUser()}}
               ></UserInfo>
               <div className="text-white text-center">
-                <small>made by <a href="https://matthewwang.me">matt</a> on <a href="https://github.com/malsf21/onechan">GitHub</a> with react, firebase, and <a href="https://github.com/malsf21/onechan">many other node libraries</a> |  avatars from <a href="http://avatars.adorable.io/">adorable avatars</a></small>
+                <small>made by <a href="https://matthewwang.me">matt</a> on <a href="https://github.com/mattxwang/onechan">GitHub</a> with react, firebase, and <a href="https://github.com/mattxwang/onechan">many other node libraries</a> |  avatars from <a href="http://avatars.adorable.io/">adorable avatars</a></small>
               </div>
             </Col>
             <Col xs="9">

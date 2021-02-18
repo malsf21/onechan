@@ -30,7 +30,7 @@ class MainNavbar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="https://github.com/malsf21/onechan">an anonymous one-channel chatroom</NavLink>
+                <NavLink href="https://github.com/mattxwang/onechan">an anonymous one-channel chatroom</NavLink>
               </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
